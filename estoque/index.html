@@ -3,35 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
-    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NORSK SV - Controle de Estoque</title>
+    <title>NRSK SV - Estoque</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-       <header>
+    <header>
         <div class="brand-container">
             <img src="../assets/logo.png" alt="Logo NRSK SV" class="app-logo">
             <h1>Estoque</h1>
         </div>
         <div class="backup-actions">
-            <button id="btnPdf">📄 Salvar PDF</button>
-            <button id="btnExportar">⬇️ Backup</button>
-            <button id="btnImportar">⬆️ Restaurar</button>
-            <a href="../index.html" class="btn-back">⬅️ Voltar</a>
+            <button type="button" id="btnPdf">📄 Salvar PDF</button>
+            <button type="button" id="btnExportar">⬇️ Backup</button>
+            <button type="button" id="btnImportar">⬆️ Restaurar</button>
             <input type="file" id="importFile" style="display:none" accept=".json">
+            <a href="../index.html" class="btn-back">⬅️ Voltar</a>
         </div>
     </header>
 
-    <div class="form-card">
+    <!-- Painel de Resumo Rápido -->
+    <div class="summary-grid">
+        <div class="summary-card">
+            <span>Reserva Sólida / Líquida</span>
+            <strong id="resumoVolume">0 kg • 0 L</strong>
+        </div>
+        <div class="summary-card card-warn">
+            <span>Precisam Repor</span>
+            <strong id="resumoRepor">0 item(ns)</strong>
+        </div>
+        <div class="summary-card card-danger">
+            <span>Vencidos / Vencendo (60d)</span>
+            <strong id="resumoVencendo">0 item(ns)</strong>
+        </div>
+    </div>
+
+    <!-- Formulário de Cadastro e Edição -->
+    <div class="form-card" id="boxFormulario">
+        <div id="avisoEdicao" class="edit-banner" style="display: none;">
+            <span>✏️ Editando item existente</span>
+            <button type="button" id="btnCancelarEdicao" class="btn-cancel-edit">Cancelar edição</button>
+        </div>
+
         <form id="itemForm" class="form-grid">
-            <div class="field-group span-5">
+            <input type="hidden" id="editId" value="">
+
+            <div class="field-group span-4">
                 <label for="nome">Item</label>
                 <input type="text" id="nome" placeholder="Ex: Arroz 5kg, Feijão, Água" required>
             </div>
 
-            <div class="field-group span-3">
+            <div class="field-group span-2">
                 <label for="categoria">Categoria</label>
                 <select id="categoria">
                     <option value="Alimentos">Alimentos</option>
@@ -40,6 +63,11 @@
                     <option value="Ferramentas/Casa">Ferramentas/Casa</option>
                     <option value="Outros">Outros</option>
                 </select>
+            </div>
+
+            <div class="field-group span-2">
+                <label for="local">Onde está guardado? (Opcional)</label>
+                <input type="text" id="local" placeholder="Ex: Garrafa PET, Despensa">
             </div>
 
             <div class="field-group span-2">
@@ -76,15 +104,16 @@
             </div>
 
             <div class="field-group span-4 btn-container">
-                <button type="submit" class="btn-add">Adicionar ao Estoque</button>
+                <button type="submit" id="btnSubmitForm" class="btn-add">Adicionar ao Estoque</button>
             </div>
         </form>
     </div>
 
+    <!-- Busca, Filtros e Ordenação PEPS -->
     <div class="filters">
-        <input type="text" id="busca" placeholder="🔍 Buscar item...">
+        <input type="text" id="busca" placeholder="🔍 Buscar item ou local (ex: PET, Balde)...">
         <select id="filtroCategoria">
-            <option value="Todas">Todas as categorias</option>
+            <option value="Todas">Todas categorias</option>
             <option value="Alimentos">Alimentos</option>
             <option value="Limpeza">Limpeza</option>
             <option value="Higiene">Higiene</option>
@@ -92,14 +121,21 @@
             <option value="Outros">Outros</option>
         </select>
         <select id="filtroStatus">
-            <option value="Todos">Todos os status</option>
-            <option value="Faltando">Precisa comprar (Baixo/Zerado)</option>
-            <option value="Vencendo">Vencidos ou perto de vencer (30 dias)</option>
+            <option value="Todos">Todos status</option>
+            <option value="Faltando">Precisa comprar</option>
+            <option value="Vencendo">Vencendo (60 dias)</option>
+        </select>
+        <select id="ordenacao" title="Ordenar lista">
+            <option value="recente">Ordem: Mais recentes</option>
+            <option value="validade">PEPS: Vence primeiro</option>
+            <option value="antigo">PEPS: Mais antigo</option>
+            <option value="nome">Ordem: A - Z</option>
         </select>
     </div>
 
     <div id="listaEstoque" class="inventory-list"></div>
 
-    <script src="script.js"></script>
+    <script src="dados-estoque.js"></script>
+    <script src="app-estoque.js"></script>
 </body>
 </html>
