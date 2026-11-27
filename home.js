@@ -43,3 +43,17 @@ function carregarResumos() {
 }
 
 carregarResumos();
+    // 4. Resumo das Tarefas
+    const tarefasSalvas = JSON.parse(localStorage.getItem('nrskTarefasCasa')) || [];
+    const tarefasPendentes = tarefasSalvas.filter(function(t) { return !t.feita; }).length;
+    const badgeTarefas = document.getElementById('resumoTarefas');
+    if (badgeTarefas) {
+        if (tarefasSalvas.length === 0) {
+            badgeTarefas.textContent = 'Nenhuma tarefa';
+        } else if (tarefasPendentes > 0) {
+            badgeTarefas.textContent = tarefasPendentes + ' tarefa(s) pendente(s)';
+            badgeTarefas.classList.add('badge-alert');
+        } else {
+            badgeTarefas.textContent = 'Tudo concluído';
+        }
+    }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NRSK SV - Tarefas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="brand-container">
+            <img src="../assets/logo.png" alt="Logo NRSK SV" class="app-logo">
+            <h1>Tarefas</h1>
+        </div>
+        <div class="backup-actions">
+            <button type="button" id="btnPdfTarefas">📄 PDF</button>
+            <button type="button" id="btnExportarTarefas">⬇️ Backup</button>
+            <button type="button" id="btnImportarTarefas">⬆️ Restaurar</button>
+            <input type="file" id="importTarefasFile" style="display:none" accept=".json">
+            <a href="../index.html" class="btn-back">⬅️ Voltar</a>
+        </div>
+    </header>
+
+    <div class="form-card">
+        <form id="formTarefa" class="form-grid">
+            <input type="text" id="tarefaTitulo" placeholder="O que precisa fazer? (Ex: Trocar vela do filtro, Reunião)" required>
+            
+            <select id="tarefaCategoria">
+                <option value="Casa">🏠 Casa</option>
+                <option value="Trabalho">💼 Trabalho</option>
+                <option value="Manutenção">🔧 Manutenção</option>
+                <option value="Compromisso">📅 Compromisso</option>
+                <option value="Pessoal">👤 Pessoal</option>
+            </select>
+
+            <select id="tarefaPrioridade" title="Prioridade">
+                <option value="alta">🔴 Alta Prioridade</option>
+                <option value="media" selected>🟡 Média Prioridade</option>
+                <option value="baixa">🟢 Baixa Prioridade</option>
+            </select>
+
+            <input type="date" id="tarefaData" title="Data (Opcional)">
+            <input type="time" id="tarefaHora" title="Horário (Opcional)">
+            
+            <button type="submit" class="btn-add">+ Adicionar Tarefa</button>
+        </form>
+    </div>
+
+    <div class="filters">
+        <select id="filtroCatTarefa">
+            <option value="Todas">Todas as categorias</option>
+            <option value="Casa">🏠 Casa</option>
+            <option value="Trabalho">💼 Trabalho</option>
+            <option value="Manutenção">🔧 Manutenção</option>
+            <option value="Compromisso">📅 Compromisso</option>
+            <option value="Pessoal">👤 Pessoal</option>
+        </select>
+
+        <select id="filtroStatusTarefa">
+            <option value="Pendentes">Somente Pendentes</option>
+            <option value="Todas">Todas (Pendentes e Feitas)</option>
+            <option value="Concluidas">Somente Concluídas</option>
+        </select>
+    </div>
+
+    <div id="listaTarefas" class="items-container"></div>
+
+    <script src="dados-tarefas.js"></script>
+    <script src="app-tarefas.js"></script>
+</body>
+</html>
