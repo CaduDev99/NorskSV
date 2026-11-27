@@ -227,3 +227,44 @@ input:focus, select:focus {
 }
 
 .btn-delete:hover { color: var(--text-main); }
+/* === ABAS DE PENDENTES E HISTÓRICO === */
+.tabs-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.tab-btn {
+    background-color: var(--card-bg);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tab-btn.active {
+    background-color: var(--primary);
+    color: var(--text-main);
+    border-color: var(--accent);
+}
+
+.btn-clear-history {
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-clear-history:hover {
+    background-color: var(--danger);
+    border-color: var(--danger);
+}

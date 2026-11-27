@@ -5,7 +5,7 @@
     <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#1e2421">
-    <title>NORSK SV - Plataforma Doméstica</title>
+    <title>NRSK SV - Plataforma Doméstica</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,9 +14,14 @@
         <div class="brand-container">
             <img src="assets/logo.png" alt="Logo NRSK SV" class="app-logo">
             <div>
-                <h1>NORSK SV</h1>
+                <h1>NRSK SV</h1>
                 <p class="subtitle">Central de Gestão e Armazenamento</p>
             </div>
+        </div>
+        <div class="backup-actions">
+            <button type="button" id="btnBackupGeral">⬇️ Backup Geral</button>
+            <button type="button" id="btnRestaurarGeral">⬆️ Restaurar Tudo</button>
+            <input type="file" id="importGeralFile" style="display:none" accept=".json">
         </div>
     </header>
 
@@ -26,7 +31,7 @@
             <div class="module-info">
                 <h2>Controle de Estoque</h2>
                 <p>Gerencie itens de longo prazo, validades e quantidades armazenadas.</p>
-                <span id="resumoEstoque" class="module-badge">Abrir</span>
+                <span id="resumoEstoque" class="module-badge">Carregando...</span>
             </div>
         </a>
 
@@ -35,7 +40,7 @@
             <div class="module-info">
                 <h2>Lista de Mercado</h2>
                 <p>Monte sua lista, marque itens no carrinho e acompanhe o total gasto.</p>
-                <span id="resumoMercado" class="module-badge">Abrir</span>
+                <span id="resumoMercado" class="module-badge">Carregando...</span>
             </div>
         </a>
 
@@ -44,7 +49,7 @@
             <div class="module-info">
                 <h2>Contas da Casa</h2>
                 <p>Controle vencimentos mensais, contas fixas e valores pendentes.</p>
-                <span id="resumoContas" class="module-badge">Abrir</span>
+                <span id="resumoContas" class="module-badge">Carregando...</span>
             </div>
         </a>
 
@@ -53,11 +58,9 @@
             <div class="module-info">
                 <h2>Tarefas & Agenda</h2>
                 <p>Organize compromissos, trabalho, casa e manutenções por prioridade.</p>
-                <span id="resumoTarefas" class="module-badge">Abrir</span>
+                <span id="resumoTarefas" class="module-badge">Carregando...</span>
             </div>
         </a>
-
-
     </main>
 
     <script src="home.js"></script>

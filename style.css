@@ -23,12 +23,36 @@ body {
     padding: 20px;
     max-width: 900px;
     margin: 0 auto;
+    padding-bottom: 50px;
 }
 
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
     border-bottom: 2px solid var(--border);
     padding-bottom: 16px;
     margin-bottom: 24px;
+}
+
+.brand-container {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+}
+
+.app-logo {
+    width: auto;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 2px;
+    padding: 0px;
+}
+
+.brand-container div {
+    margin-left: -25px;
 }
 
 h1 {
@@ -41,6 +65,30 @@ h1 {
     color: var(--text-muted);
     font-size: 0.9rem;
     margin-top: 4px;
+}
+
+.backup-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.backup-actions button {
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    padding: 9px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.backup-actions button:hover {
+    background-color: var(--primary);
+    border-color: var(--accent);
 }
 
 .dashboard-grid {
@@ -67,17 +115,6 @@ h1 {
     background-color: #2e3833;
     transform: translateY(-2px);
     border-color: var(--accent);
-}
-
-.module-card.module-soon {
-    opacity: 0.55;
-    border-left-color: var(--border);
-    cursor: default;
-}
-
-.module-card.module-soon:hover {
-    transform: none;
-    background-color: var(--card-bg);
 }
 
 .module-icon {
@@ -109,26 +146,3 @@ h1 {
 .module-badge.badge-alert {
     background-color: var(--warning);
 }
-
-.module-badge.badge-muted {
-    background-color: var(--input-bg);
-    color: var(--text-muted);
-}
-.brand-container {
-    display: flex;
-    align-items: center;
-    gap: 0px;
-}
-
-.app-logo {
-    width: auto;          
-    height: 150px;
-    object-fit: contain;
-    border-radius: 2px;
-    padding: 0px;
-}
-
-.brand-container div {
-    margin-left: -25px;   
-}
-

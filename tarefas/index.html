@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NORSK SV - Tarefas</title>
+    <title>NRSK SV - Tarefas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -48,6 +48,12 @@
         </form>
     </div>
 
+    <!-- Abas rápidas para alternar entre Pendentes e Histórico -->
+    <div class="tabs-bar">
+        <button type="button" id="tabPendentes" class="tab-btn active">📋 Pendentes (<span id="countPendentes">0</span>)</button>
+        <button type="button" id="tabHistorico" class="tab-btn">✅ Histórico Concluídas (<span id="countConcluidas">0</span>)</button>
+    </div>
+
     <div class="filters">
         <select id="filtroCatTarefa">
             <option value="Todas">Todas as categorias</option>
@@ -57,12 +63,7 @@
             <option value="Compromisso">📅 Compromisso</option>
             <option value="Pessoal">👤 Pessoal</option>
         </select>
-
-        <select id="filtroStatusTarefa">
-            <option value="Pendentes">Somente Pendentes</option>
-            <option value="Todas">Todas (Pendentes e Feitas)</option>
-            <option value="Concluidas">Somente Concluídas</option>
-        </select>
+        <button type="button" id="btnLimparHistorico" class="btn-clear-history" style="display: none;">🧹 Limpar Histórico</button>
     </div>
 
     <div id="listaTarefas" class="items-container"></div>
