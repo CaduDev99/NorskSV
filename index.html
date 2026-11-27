@@ -7,6 +7,9 @@
     <meta name="theme-color" content="#1e2421">
     <title>NRSK SV - Plataforma Doméstica</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+
 </head>
 <body>
 
@@ -64,5 +67,13 @@
     </main>
 
     <script src="home.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('./sw.js');
+            });
+        }
+    </script>
+
 </body>
 </html>
