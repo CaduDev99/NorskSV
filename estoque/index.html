@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NORSK SV - Controle de Estoque</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+       <header>
+        <div class="brand-container">
+            <img src="../assets/logo.png" alt="Logo NRSK SV" class="app-logo">
+            <h1>Estoque</h1>
+        </div>
+        <div class="backup-actions">
+            <button id="btnPdf">📄 Salvar PDF</button>
+            <button id="btnExportar">⬇️ Backup</button>
+            <button id="btnImportar">⬆️ Restaurar</button>
+            <a href="../index.html" class="btn-back">⬅️ Voltar</a>
+            <input type="file" id="importFile" style="display:none" accept=".json">
+        </div>
+    </header>
+
+    <div class="form-card">
+        <form id="itemForm" class="form-grid">
+            <div class="field-group span-5">
+                <label for="nome">Item</label>
+                <input type="text" id="nome" placeholder="Ex: Arroz 5kg, Feijão, Água" required>
+            </div>
+
+            <div class="field-group span-3">
+                <label for="categoria">Categoria</label>
+                <select id="categoria">
+                    <option value="Alimentos">Alimentos</option>
+                    <option value="Limpeza">Limpeza</option>
+                    <option value="Higiene">Higiene</option>
+                    <option value="Ferramentas/Casa">Ferramentas/Casa</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </div>
+
+            <div class="field-group span-2">
+                <label for="quantidade">Qtd Atual</label>
+                <input type="number" id="quantidade" placeholder="0" min="0" step="any" required>
+            </div>
+
+            <div class="field-group span-2">
+                <label for="unidade">Unidade</label>
+                <select id="unidade">
+                    <option value="un">Unidade (un)</option>
+                    <option value="kg">Quilos (kg)</option>
+                    <option value="g">Gramas (g)</option>
+                    <option value="L">Litros (L)</option>
+                    <option value="ml">Mililitros (ml)</option>
+                    <option value="pct">Pacote (pct)</option>
+                    <option value="cx">Caixa (cx)</option>
+                </select>
+            </div>
+
+            <div class="field-group span-2">
+                <label for="minimo">Qtd Mínima</label>
+                <input type="number" id="minimo" placeholder="Alerta" min="0" step="any" required>
+            </div>
+
+            <div class="field-group span-2">
+                <label for="dataArmazenamento">Armazenado em</label>
+                <input type="date" id="dataArmazenamento">
+            </div>
+
+            <div class="field-group span-4">
+                <label for="dataValidade">Data de Validade (Opcional)</label>
+                <input type="date" id="dataValidade">
+            </div>
+
+            <div class="field-group span-4 btn-container">
+                <button type="submit" class="btn-add">Adicionar ao Estoque</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="filters">
+        <input type="text" id="busca" placeholder="🔍 Buscar item...">
+        <select id="filtroCategoria">
+            <option value="Todas">Todas as categorias</option>
+            <option value="Alimentos">Alimentos</option>
+            <option value="Limpeza">Limpeza</option>
+            <option value="Higiene">Higiene</option>
+            <option value="Ferramentas/Casa">Ferramentas/Casa</option>
+            <option value="Outros">Outros</option>
+        </select>
+        <select id="filtroStatus">
+            <option value="Todos">Todos os status</option>
+            <option value="Faltando">Precisa comprar (Baixo/Zerado)</option>
+            <option value="Vencendo">Vencidos ou perto de vencer (30 dias)</option>
+        </select>
+    </div>
+
+    <div id="listaEstoque" class="inventory-list"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

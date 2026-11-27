@@ -1,0 +1,329 @@
+:root {
+    --bg-color: #1e2421;       /* Fundo cinza-esverdeado fosco */
+    --card-bg: #272f2b;        /* Cartões sólidos em tom próximo */
+    --input-bg: #181d1a;       /* Campos de digitação mais fechados */
+    --text-main: #ffffff;      /* Branco puro para as letras */
+    --text-muted: #b0bab5;     /* Cinza claro fosco para textos secundários */
+    --primary: #2d4c3e;        /* Verde musgo escuro sólido */
+    --primary-hover: #385e4d;  /* Verde fosco ao passar o mouse */
+    --accent: #4a7862;         /* Verde sólido para bordas */
+    --danger: #9e3b3b;         /* Vermelho fosco */
+    --warning: #a67c37;        /* Amarelo/ocre fosco */
+    --border: #36413b;         /* Bordas discretas */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 16px;
+}
+
+h1 {
+    font-size: 1.6rem;
+    color: var(--text-main);
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.backup-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.backup-actions button {
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+.backup-actions button:hover {
+    background-color: var(--primary);
+    border-color: var(--accent);
+}
+
+.form-card {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+}
+
+.form-grid {
+    display: grid;
+    gap: 12px;
+    width: 100%;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+}
+
+.field-group label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.btn-container {
+    justify-content: flex-end;
+}
+
+@media (min-width: 650px) {
+    .form-grid {
+        grid-template-columns: repeat(8, 1fr);
+    }
+    .span-2 { grid-column: span 2; }
+    .span-3 { grid-column: span 3; }
+    .span-4 { grid-column: span 4; }
+    .span-5 { grid-column: span 5; }
+}
+
+@media (max-width: 649px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+input, select {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 10px 12px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    width: 100%;
+    min-width: 0;
+    color-scheme: dark;
+}
+
+input::placeholder {
+    color: var(--text-muted);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+button.btn-add {
+    background-color: var(--primary);
+    color: var(--text-main);
+    border: 1px solid var(--accent);
+    padding: 11px 16px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-align: center;
+    width: 100%;
+}
+
+button.btn-add:hover {
+    background-color: var(--primary-hover);
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.filters input {
+    flex: 2;
+    min-width: 200px;
+}
+
+.filters select {
+    flex: 1;
+    min-width: 160px;
+}
+
+.inventory-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.item-card {
+    background-color: var(--card-bg);
+    padding: 16px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--accent);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.item-card.low-stock {
+    border-left-color: var(--warning);
+}
+
+.item-card.out-of-stock {
+    border-left-color: var(--danger);
+}
+
+.item-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    color: var(--text-main);
+}
+
+.item-meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.item-dates {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.badge-ok { background-color: var(--primary); }
+.badge-low { background-color: var(--warning); }
+.badge-out { background-color: var(--danger); }
+
+.item-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.qty-btn {
+    background-color: var(--input-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    width: 34px;
+    height: 34px;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qty-btn:hover {
+    background-color: var(--primary);
+    border-color: var(--accent);
+}
+
+.qty-display {
+    min-width: 75px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+.btn-delete {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    margin-left: 8px;
+    font-size: 1rem;
+}
+
+.btn-delete:hover {
+    color: var(--text-main);
+}
+/* === ESTILO DO BOTÃO VOLTAR E TÍTULO === */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.btn-back {
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-back:hover {
+    background-color: var(--primary);
+    border-color: var(--accent);
+}
+/* === LOGO NO CABEÇALHO DO ESTOQUE === */
+.brand-container {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+}
+
+.app-logo {
+    width: auto;
+    height: 75px;
+    object-fit: contain;
+    border-radius: 2px;
+    padding: 0px;
+}
+
+.brand-container h1 {
+    margin-left: -12px;
+}
+.backup-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1e2421">
+    <title>NORSK SV - Plataforma Doméstica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="brand-container">
+            <img src="assets/logo.png" alt="Logo NRSK SV" class="app-logo">
+            <div>
+                <h1>NORSK SV</h1>
+                <p class="subtitle">Central de Gestão e Armazenamento</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-grid">
+        <a href="estoque/index.html" class="module-card">
+            <div class="module-icon">📦</div>
+            <div class="module-info">
+                <h2>Controle de Estoque</h2>
+                <p>Gerencie itens de longo prazo, validades e quantidades armazenadas.</p>
+                <span id="resumoEstoque" class="module-badge">Abrir</span>
+            </div>
+        </a>
+
+        <a href="mercado/index.html" class="module-card">
+            <div class="module-icon">🛒</div>
+            <div class="module-info">
+                <h2>Lista de Mercado</h2>
+                <p>Monte sua lista, marque itens no carrinho e acompanhe o total gasto.</p>
+                <span id="resumoMercado" class="module-badge">Abrir</span>
+            </div>
+        </a>
+
+        <div class="module-card module-soon">
+            <div class="module-icon">➕</div>
+            <div class="module-info">
+                <h2>Novos Módulos</h2>
+                <p>Espaço reservado para futuras ferramentas da plataforma.</p>
+                <span class="module-badge badge-muted">Em breve</span>
+            </div>
+        </div>
+    </main>
+
+    <script src="home.js"></script>
+</body>
+</html>

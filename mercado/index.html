@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NORSK SV - Mercado</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="brand-container">
+            <img src="../assets/logo.png" alt="Logo NRSK SV" class="app-logo">
+            <h1>Mercado</h1>
+        </div>
+        <div class="backup-actions">
+            <button type="button" id="btnPuxarEstoque">📥 Puxar Faltantes</button>
+            <button type="button" id="btnRestaurarLista">⬆️ Restaurar</button>
+            <input type="file" id="importListaFile" style="display:none" accept=".json">
+            <button type="button" id="btnLimparLista">🗑️ Limpar</button>
+            <a href="../index.html" class="btn-back">⬅️ Voltar</a>
+        </div>
+    </header>
+
+    <div class="mode-switcher">
+        <button type="button" id="tabPlanejar" class="mode-btn active">
+            <span class="mode-icon">📝</span>
+            <div>
+                <strong>1. Montar Lista</strong>
+                <small>Planejar em casa</small>
+            </div>
+        </button>
+        <button type="button" id="tabComprar" class="mode-btn">
+            <span class="mode-icon">🛍️</span>
+            <div>
+                <strong>2. Modo Mercado</strong>
+                <small>Marcar e somar preços</small>
+            </div>
+        </button>
+    </div>
+
+    <!-- MODO 1: MONTAR LISTA EM CASA -->
+    <section id="secaoPlanejar">
+        <div class="form-card">
+            <form id="formPlanejar" class="plan-grid">
+                <input type="text" id="planNome" placeholder="Item (ex: Arroz, Café, Leite)" required>
+                <input type="text" id="planMarca" placeholder="Marca preferida (opcional)">
+                <input type="number" id="planQtd" placeholder="Qtd" value="1" min="0.1" step="any" required>
+                <select id="planUnidade" title="Unidade de medida">
+                    <option value="un">Unidade (un)</option>
+                    <option value="kg">Quilos (kg)</option>
+                    <option value="g">Gramas (g)</option>
+                    <option value="L">Litros (L)</option>
+                    <option value="ml">Mililitros (ml)</option>
+                    <option value="pct">Pacote (pct)</option>
+                    <option value="cx">Caixa (cx)</option>
+                </select>
+                <button type="submit" class="btn-add">+ Na Lista</button>
+            </form>
+        </div>
+
+        <div class="list-header">
+            <h3>Itens Planejados (<span id="qtdPlanejados">0</span>)</h3>
+        </div>
+        <div id="listaPlanejamento" class="items-container"></div>
+
+        <div class="bottom-actions">
+            <button type="button" id="btnSalvarListaPlanejada" class="btn-finish">💾 Salvar / Backup da Lista</button>
+        </div>
+    </section>
+
+    <!-- MODO 2: USANDO NO MERCADO -->
+    <section id="secaoComprar" style="display: none;">
+        <div class="cart-summary">
+            <div>
+                <span class="summary-label">Pegos / Total</span>
+                <strong id="resumoProgresso">0 de 0</strong>
+            </div>
+            <div style="text-align: right;">
+                <span class="summary-label">Total no Carrinho</span>
+                <strong id="resumoTotal" class="total-highlight">R$ 0,00</strong>
+            </div>
+        </div>
+
+        <div id="listaCorredor" class="items-container"></div>
+
+        <div class="extra-card">
+            <h4>➕ Pegou algo fora da lista?</h4>
+            <form id="formExtra" class="extra-grid">
+                <input type="text" id="extraNome" placeholder="Nome do item extra" required>
+                <input type="text" id="extraMarca" placeholder="Marca">
+                <input type="number" id="extraQtd" placeholder="Qtd" value="1" min="0.1" step="any" required>
+                <select id="extraUnidade" title="Unidade de medida">
+                    <option value="un">un</option>
+                    <option value="kg">kg</option>
+                    <option value="g">g</option>
+                    <option value="L">L</option>
+                    <option value="ml">ml</option>
+                    <option value="pct">pct</option>
+                    <option value="cx">cx</option>
+                </select>
+                <input type="number" id="extraPreco" placeholder="R$ Unit." min="0" step="0.01" required>
+                <button type="submit" class="btn-add">Adicionar ao Carrinho</button>
+            </form>
+        </div>
+
+        <div class="bottom-actions">
+            <button type="button" id="btnFinalizarCompra" class="btn-finish">✅ Finalizar Compra</button>
+        </div>
+    </section>
+
+    <!-- JANELA DE CONFERÊNCIA NO CAIXA / FINALIZAÇÃO -->
+    <div id="modalFinalizar" class="modal-overlay" style="display: none;">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="modalTitulo">✅ Conferência de Caixa</h3>
+                <button type="button" id="btnFecharModal" class="btn-close">✖</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="compare-row">
+                    <span>Valor calculado na lista:</span>
+                    <strong id="modalValorLista" class="total-highlight">R$ 0,00</strong>
+                </div>
+
+                <div id="blocoConferenciaCaixa">
+                    <label for="inputValorCaixa">Quanto deu no caixa? (R$)</label>
+                    <input type="number" id="inputValorCaixa" placeholder="Digite o valor cobrado no caixa" min="0" step="0.01">
+                    <div id="resultadoDiferenca" class="diff-box">Digite o valor pago no caixa para conferir se bateu.</div>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" id="btnGerarPdfCompra" class="btn-add">📄 Gerar PDF</button>
+                    <button type="button" id="btnBaixarJsonCompra" class="btn-secondary">⬇️ Salvar Backup (.json)</button>
+                </div>
+
+                <button type="button" id="btnEnviarEstoque" class="btn-finish" style="margin-top: 8px;">
+                    📦 Enviar Itens Pegos para o Estoque
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="dados-mercado.js"></script>
+    <script src="tela-mercado.js"></script>
+    <script src="acoes-mercado.js"></script>
+    <script src="modal-mercado.js"></script>
+</body>
+</html>
