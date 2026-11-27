@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NORSK SV - Contas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="brand-container">
+            <img src="../assets/logo.png" alt="Logo NRSK SV" class="app-logo">
+            <h1>Contas</h1>
+        </div>
+        <div class="backup-actions">
+            <button type="button" id="btnPdfContas">📄 PDF</button>
+            <button type="button" id="btnExportarContas">⬇️ Backup</button>
+            <button type="button" id="btnImportarContas">⬆️ Restaurar</button>
+            <input type="file" id="importContasFile" style="display:none" accept=".json">
+            <a href="../index.html" class="btn-back">⬅️ Voltar</a>
+        </div>
+    </header>
+
+    <div class="summary-grid">
+        <div class="summary-card">
+            <span>Total Previsto</span>
+            <strong id="totalGeral">R$ 0,00</strong>
+        </div>
+        <div class="summary-card card-paid">
+            <span>Total Pago</span>
+            <strong id="totalPago">R$ 0,00</strong>
+        </div>
+        <div class="summary-card card-pending">
+            <span>Falta Pagar</span>
+            <strong id="totalPendente">R$ 0,00</strong>
+        </div>
+    </div>
+
+    <div class="form-card">
+        <form id="formConta" class="form-grid">
+            <input type="text" id="contaNome" placeholder="Conta (ex: Luz, Água, Internet)" required>
+            <select id="contaCategoria">
+                <option value="Moradia">Moradia (Água/Luz/Aluguel)</option>
+                <option value="Internet/TV">Internet / Telefone</option>
+                <option value="Cartão/Banco">Cartão / Empréstimo</option>
+                <option value="Veículo">Veículo / Combustível</option>
+                <option value="Outros">Outros</option>
+            </select>
+            <input type="number" id="contaValor" placeholder="Valor (R$)" min="0.01" step="0.01" required>
+            <input type="date" id="contaVencimento" required>
+            <select id="contaRecorrente" title="Repetir todo mês?">
+                <option value="fixa">Fixa (Mensal)</option>
+                <option value="avulsa">Avulsa (Única)</option>
+            </select>
+            <button type="submit" class="btn-add">+ Adicionar</button>
+        </form>
+    </div>
+
+    <div class="filters">
+        <select id="filtroMes">
+            <option value="Todos">Todos os meses</option>
+        </select>
+        <select id="filtroStatusConta">
+            <option value="Todos">Todas as contas</option>
+            <option value="Pendentes">Somente Pendentes</option>
+            <option value="Pagas">Somente Pagas</option>
+        </select>
+    </div>
+
+    <div id="listaContas" class="items-container"></div>
+
+    <script src="dados-contas.js"></script>
+    <script src="app-contas.js"></script>
+</body>
+</html>

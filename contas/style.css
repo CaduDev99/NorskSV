@@ -1,0 +1,267 @@
+:root {
+    --bg-color: #1e2421;
+    --card-bg: #272f2b;
+    --input-bg: #181d1a;
+    --text-main: #ffffff;
+    --text-muted: #b0bab5;
+    --primary: #2d4c3e;
+    --primary-hover: #385e4d;
+    --accent: #4a7862;
+    --danger: #9e3b3b;
+    --warning: #a67c37;
+    --border: #36413b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 16px;
+}
+
+.brand-container {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+}
+
+.app-logo {
+    width: auto;
+    height: 75px;
+    object-fit: contain;
+}
+
+.brand-container h1 {
+    font-size: 1.5rem;
+    margin-left: -12px;
+}
+
+.backup-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.backup-actions button, .btn-back {
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.backup-actions button:hover, .btn-back:hover {
+    background-color: var(--primary);
+    border-color: var(--accent);
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .summary-grid { grid-template-columns: 1fr; }
+}
+
+.summary-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    padding: 14px 16px;
+    border-radius: 6px;
+}
+
+.summary-card.card-paid { border-left-color: #6cc497; }
+.summary-card.card-pending { border-left-color: var(--warning); }
+
+.summary-card span {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+.summary-card strong {
+    font-size: 1.3rem;
+}
+
+.form-card {
+    background-color: var(--card-bg);
+    padding: 18px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+}
+
+#contaNome { grid-column: span 3; }
+#contaCategoria { grid-column: span 3; }
+#contaValor { grid-column: span 2; }
+#contaVencimento { grid-column: span 2; }
+#contaRecorrente { grid-column: span 2; }
+.btn-add { grid-column: span 6; }
+
+@media (max-width: 650px) {
+    .form-grid { grid-template-columns: 1fr; }
+    #contaNome, #contaCategoria, #contaValor, #contaVencimento, #contaRecorrente, .btn-add {
+        grid-column: span 1;
+    }
+}
+
+input, select {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 10px 12px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    width: 100%;
+    color-scheme: dark;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.btn-add {
+    background-color: var(--primary);
+    color: var(--text-main);
+    border: 1px solid var(--accent);
+    padding: 11px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-add:hover { background-color: var(--primary-hover); }
+
+.filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bill-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--accent);
+    border-radius: 6px;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.bill-card.status-paga {
+    border-left-color: #6cc497;
+    opacity: 0.7;
+}
+
+.bill-card.status-atrasada { border-left-color: var(--danger); }
+.bill-card.status-alerta { border-left-color: var(--warning); }
+
+.bill-info h3 {
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+}
+
+.bill-meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.badge-ok { background-color: var(--primary); }
+.badge-warn { background-color: var(--warning); }
+.badge-late { background-color: var(--danger); }
+
+.bill-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bill-value {
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.btn-pay {
+    background-color: var(--input-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    padding: 7px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-pay.paid {
+    background-color: var(--primary);
+    border-color: #6cc497;
+}
+
+.btn-delete {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-delete:hover { color: var(--text-main); }
