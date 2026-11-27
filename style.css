@@ -121,7 +121,7 @@ h1 {
 }
 
 .app-logo {
-    width: auto;          /* Evita espaço sobrando nas laterais se a logo for vertical/quadrada */
+    width: auto;          
     height: 150px;
     object-fit: contain;
     border-radius: 2px;
@@ -129,6 +129,6 @@ h1 {
 }
 
 .brand-container div {
-    margin-left: -25px;   /* Puxa o título para mais perto da logo (aumente ou diminua esse número como preferir) */
+    margin-left: -25px;   
 }
 

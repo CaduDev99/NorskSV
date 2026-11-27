@@ -1,5 +1,4 @@
 function carregarResumos() {
-    // 1. Resumo do Estoque
     const estoqueSalvo = JSON.parse(localStorage.getItem('meuEstoqueCasa')) || [];
     const faltando = estoqueSalvo.filter(function(i) { return i.quantidade <= i.minimo; }).length;
     const badgeEstoque = document.getElementById('resumoEstoque');
@@ -15,7 +14,6 @@ function carregarResumos() {
         }
     }
 
-    // 2. Resumo do Mercado
     const listaMercado = JSON.parse(localStorage.getItem('nrskListaMercado')) || [];
     const pendentes = listaMercado.filter(function(i) { return i.status === 'pendente'; }).length;
     const badgeMercado = document.getElementById('resumoMercado');
@@ -28,7 +26,6 @@ function carregarResumos() {
         }
     }
 
-    // 3. Resumo das Contas da Casa
     const contasSalvas = JSON.parse(localStorage.getItem('nrskContasCasa')) || [];
     const contasPendentes = contasSalvas.filter(function(c) { return !c.paga; }).length;
     const badgeContas = document.getElementById('resumoContas');

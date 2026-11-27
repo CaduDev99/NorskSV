@@ -1,15 +1,15 @@
 :root {
-    --bg-color: #1e2421;       /* Fundo cinza-esverdeado fosco */
-    --card-bg: #272f2b;        /* Cartões sólidos em tom próximo */
-    --input-bg: #181d1a;       /* Campos de digitação mais fechados */
-    --text-main: #ffffff;      /* Branco puro para as letras */
-    --text-muted: #b0bab5;     /* Cinza claro fosco para textos secundários */
-    --primary: #2d4c3e;        /* Verde musgo escuro sólido */
-    --primary-hover: #385e4d;  /* Verde fosco ao passar o mouse */
-    --accent: #4a7862;         /* Verde sólido para bordas */
-    --danger: #9e3b3b;         /* Vermelho fosco */
-    --warning: #a67c37;        /* Amarelo/ocre fosco */
-    --border: #36413b;         /* Bordas discretas */
+    --bg-color: #1e2421;       
+    --card-bg: #272f2b;        
+    --input-bg: #181d1a;       
+    --text-main: #ffffff;      
+    --text-muted: #b0bab5;     
+    --primary: #2d4c3e;        
+    --primary-hover: #385e4d;  
+    --accent: #4a7862;         
+    --danger: #9e3b3b;         
+    --warning: #a67c37;        
+    --border: #36413b;         
 }
 
 * {
@@ -277,7 +277,6 @@ button.btn-add:hover {
 .btn-delete:hover {
     color: var(--text-main);
 }
-/* === ESTILO DO BOTÃO VOLTAR E TÍTULO === */
 .header-left {
     display: flex;
     align-items: center;
@@ -303,7 +302,6 @@ button.btn-add:hover {
     background-color: var(--primary);
     border-color: var(--accent);
 }
-/* === LOGO NO CABEÇALHO DO ESTOQUE === */
 .brand-container {
     display: flex;
     align-items: center;

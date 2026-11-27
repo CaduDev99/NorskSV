@@ -436,7 +436,6 @@ input:focus, select:focus {
     color: var(--text-main);
 }
 
-/* Janela de Conferência de Caixa */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -530,7 +529,6 @@ input:focus, select:focus {
     gap: 10px;
     margin-top: 6px;
 }
-/* === LOGO E ALINHAMENTO DO CABEÇALHO === */
 .brand-container {
     display: flex;
     align-items: center;
